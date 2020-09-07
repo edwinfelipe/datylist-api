@@ -1,0 +1,32 @@
+{
+  "name": "datylist-api",
+  "version": "1.0.0",
+  "description": "Api for the stylist date reservation app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinfelipe/datylist-api.git"
+  },
+  "author": "edwinisfelipe25@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwinfelipe/datylist-api/issues"
+  },
+  "homepage": "https://github.com/edwinfelipe/datylist-api#readme",
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "json-web-token": "^3.2.0",
+    "mongoose": "^5.10.3"
+  }
+}
