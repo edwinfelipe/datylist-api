@@ -4,7 +4,7 @@
   "description": "Api for the stylist date reservation app",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/edwinfelipe/datylist-api#readme",
   "devDependencies": {
     "jest": "^26.4.2",
+    "mongodb-memory-server": "^6.6.7",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
   },
