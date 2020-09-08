@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/edwinfelipe/datylist-api#readme",
   "devDependencies": {
+    "faker": "^5.1.0",
     "jest": "^26.4.2",
     "mongodb-memory-server": "^6.6.7",
     "nodemon": "^2.0.4",
@@ -27,7 +28,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "json-web-token": "^3.2.0",
+    "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.3"
   }
 }
