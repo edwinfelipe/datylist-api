@@ -5,7 +5,12 @@ const {
   postAuthLogin,
   getAuthMe,
 } = require("./controllers/authController");
-const { postDate, getDates } = require("./controllers/dateController");
+const {
+  postDate,
+  getDates,
+  putDate,
+  deleteDate,
+} = require("./controllers/dateController");
 const validation = require("./middlewares/auth");
 const isAuth = require("./middlewares/isAuth");
 
@@ -17,4 +22,6 @@ router.get("/auth/me", getAuthMe);
 
 router.post("/user/:id/date", postDate);
 router.get("/user/:id/date", getDates);
+router.put("/user/date/:id", putDate);
+router.delete("/user/date/:id", deleteDate);
 module.exports = router;
