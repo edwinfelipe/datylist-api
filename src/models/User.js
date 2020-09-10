@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String },
   password: { type: String, required: true, select: false },
+  rol: { type: String, default: "client" },
 });
 
 UserSchema.pre("save", async function () {
@@ -20,7 +21,7 @@ UserSchema.pre("save", async function () {
   }
 });
 
-UserSchema.method("toJSON", function() {
+UserSchema.method("toJSON", function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;

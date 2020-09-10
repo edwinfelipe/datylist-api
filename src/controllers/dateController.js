@@ -1,10 +1,18 @@
-const DateModel = require("../models/Date");
 const HTTPError = require("../utils/errorHandler");
+const DateModel = require("../models/Date");
+const User = require("../models/User");
+
 const postDate = async (req, res) => {
   try {
     const raw = req.body;
     const stylistId = req.params.id;
     const { _id } = req.user;
+
+    const stylist = await User.findById(stylistId);
+
+    if (stylist.rol == "client")
+      throw new HTTPError("You only can reserve sites with stylists", 400);
+      
     const stylistDates = await DateModel.find({
       stylist: stylistId,
       date: {
@@ -32,6 +40,24 @@ const postDate = async (req, res) => {
   }
 };
 
+const getDates = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const stylist = await User.findById(id);
+    if (stylist.rol === "client" && id != req.user._id)
+      throw new HTTPError(
+        "Only the stylist dates and your own are public, you cant perform this action",
+        403
+      );
+
+    const dates = await DateModel.find();
+    res.status(200).json(dates);
+  } catch (err) {
+    console.log(err);
+    if (err.custom) return res.status(err.status).json({ error: err.message });
+    res.status(500).json({ err });
+  }
+};
 const add30MinutesToDate = (dateString) => {
   const date = new Date(dateString);
   let time = date.getTime();
@@ -50,4 +76,5 @@ const substract30MinutesToDate = (dateString) => {
 
 module.exports = {
   postDate,
+  getDates,
 };

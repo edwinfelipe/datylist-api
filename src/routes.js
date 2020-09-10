@@ -5,7 +5,7 @@ const {
   postAuthLogin,
   getAuthMe,
 } = require("./controllers/authController");
-const { postDate } = require("./controllers/dateController");
+const { postDate, getDates } = require("./controllers/dateController");
 const validation = require("./middlewares/auth");
 const isAuth = require("./middlewares/isAuth");
 
@@ -15,5 +15,6 @@ router.post("/auth/login", postAuthLogin);
 router.use(isAuth);
 router.get("/auth/me", getAuthMe);
 
-router.post("/stylist/:id/date", postDate);
+router.post("/user/:id/date", postDate);
+router.get("/user/:id/date", getDates);
 module.exports = router;
