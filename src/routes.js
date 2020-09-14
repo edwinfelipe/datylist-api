@@ -18,10 +18,15 @@ const {
   putRate,
   deleteRate,
 } = require("./controllers/rateController");
-const validation = require("./middlewares/auth");
+
+const { putUser, getUsers } = require("./controllers/userController");
+const {
+  registerValidation,
+  userUpdateValidation,
+} = require("./middlewares/validations");
 const isAuth = require("./middlewares/isAuth");
 
-router.post("/auth/register", validation, postAuthRegister);
+router.post("/auth/register", registerValidation, postAuthRegister);
 router.post("/auth/login", postAuthLogin);
 
 router.use(isAuth);
@@ -36,4 +41,7 @@ router.post("/user/:id/rate", postRate);
 router.get("/user/:id/rate", getRates);
 router.put("/user/:uid/rate/:id", putRate);
 router.delete("/user/:uid/rate/:id", deleteRate);
+
+router.get('/user', getUsers);
+router.put("/user", userUpdateValidation, putUser);
 module.exports = router;
